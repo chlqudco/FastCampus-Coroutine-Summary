@@ -283,6 +283,7 @@ runBlocking: main @coroutine#1
 	- withContext(NonCancellable)을 이용해서 취소가 불가능 하게 하자
 
 ```
+
 suspend fun doOneTwoThree() = coroutineScope {
     val job1 = launch {
         withContext(NonCancellable) {
@@ -320,13 +321,11 @@ suspend fun doOneTwoThree() = coroutineScope {
     job3.cancel()
     println("4!")
 }
-
 fun main() = runBlocking {
     doOneTwoThree()
     println("runBlocking: ${Thread.currentThread().name}")
     println("5!")
 }
-
 결과
 launch1: main @coroutine#2
 launch1: main @coroutine#3
@@ -344,10 +343,9 @@ runBlocking: main @coroutine#1
 	- 자원을 반드시 해제해야 하는 경우에 넣으면 좋음
 	- finally는 보장을 하지 못함
 
----
-
 - 코루틴을 적정한 시간 뒤에 종료하고 싶으면 타임아웃을 이용해야 한다
 	- 일정 시간동안 작업이 이루어지지 않으면 취소하는게 맞을 수 있다.
+
 
 ```
 suspend fun doCount() = coroutineScope {
@@ -417,4 +415,5 @@ fun main() = runBlocking {
 3
 4
 false
+
 ```
