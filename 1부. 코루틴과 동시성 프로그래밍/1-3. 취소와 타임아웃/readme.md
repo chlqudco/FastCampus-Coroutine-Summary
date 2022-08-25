@@ -144,7 +144,7 @@ fun main() = runBlocking {
 9
 10
 doCount Done!
-``
+```
 
 - cancel 뒤에 join을 호출하는 건 자주 일어나기 때문에 한번에 호출할 수 있다.
 
